@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPA with Angular</title>
+</head>
+
+<body>
+
+  <mat-toolbar>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+    <span> My first SPA</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div>
+
+    <spa-students [valueInitial]="value"></spa-students>
+
+    <button (click)="changeValue()">Change Value</button>
+    <button (click)="resetValue()">Reset Value</button>
+    <button (click)="displayTable()">Display Table</button>
+
+  </div>
+
+  <table *ngIf="displayTable">
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>E-mail</th>
+      <th>Course</th>
+    </tr>
+    <tr *ngFor="let student of listStudents">
+      <td>{{student.name}}</td>
+      <td>{{student.age}}</td>
+      <td>{{student.email}}</td>
+      <td>{{student.course}}</td>
+    </tr>
+  </table>
+
+  <spa-teachers></spa-teachers>
+
+</body>
+
+</html>
